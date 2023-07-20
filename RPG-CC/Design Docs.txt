@@ -1,0 +1,18 @@
+CC-RPG
+
+Game Type: RPG
+
+Players: SinglePlayer
+
+Requirements:
+	NPC Dialogue
+	Turn Based Battles
+	Cutscenes using in-engine characters
+	Multiple areas
+	Doors, houses and other inhabitable areas to explore
+	Enemies and bosses based off of CC members and/or chiptune
+	Multiple party members
+
+Members will be done via an OPT-IN system. No user wwill be put in without their expressed consent.
+
+this project will be available to anyone and anybody can modify it to further the project.
