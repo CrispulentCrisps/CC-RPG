@@ -1,11 +1,14 @@
+#ifndef GAME_H
+#define GAME_H
+
 #include <genesis.h>
 #include <resource.h>
-#include "Camera.c"
-#include "Audio.c"
-#include "Map.c"
+#include "Camera.h"
 
-uint8_t SceneIndex;
-uint32_t Frame;
+extern uint8_t SceneIndex;
+extern uint32_t Frame;
 
 void Game_Start(void);
 void Game_Update(void);
+
+#endif

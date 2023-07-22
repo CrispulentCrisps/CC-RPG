@@ -5,6 +5,7 @@
     "inc"
 ],
 "files.associations": {
-    "uielements.h": "c"
+    "uielements.h": "c",
+    "resource.h": "c"
 }
 }
