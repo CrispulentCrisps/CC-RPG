@@ -3,5 +3,8 @@
     "${env:MARSDEV}\\sgdk\\SGDK\\res",
     "res",
     "inc"
-]
+],
+"files.associations": {
+    "uielements.h": "c"
+}
 }
