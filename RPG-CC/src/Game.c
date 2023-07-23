@@ -1,28 +1,16 @@
 #include "Game.h"
-#include <string.h>
-enum GAME_STATE {
-    MAP,
-    CUTSCENE,
-    BATTLE,
-    NON
-};
 
-enum SCENE_LIST {
-    TITLE
-};
-
-struct UIBox{
-    int x;
-    int y;
-    int w;
-    int h;
-    const char* StoredText;
-    const char* DisplayText;
-};
-
-struct Scene {
-    Sprite sprites[80];
-};
+void myJoyHandler( u16 joy, u16 changed, u16 state)
+{
+    if (joy == JOY_1 && !changed)
+    {
+        Joy_1_State = state;
+    }
+    else if (joy == JOY_2 && !changed)
+    {
+        Joy_2_State = state;
+    }
+}
 
 void RenderTextBox(u8 Plane, struct UIBox box){
     //Top and bottom bars
@@ -40,10 +28,10 @@ void RenderTextBox(u8 Plane, struct UIBox box){
     VDP_setTileMapXY(Plane, TILE_ATTR_FULL(PAL3,99,TRUE,FALSE,1), box.x, box.y+box.h+1);
 
     //Inside Text
-    VDP_fillTileMapRect(Plane ,TILE_ATTR_FULL(PAL3,98,FALSE,FALSE,4),box.x+1,box.y+1,box.w,box.h);
+    VDP_fillTileMapRect(Plane+1,TILE_ATTR_FULL(PAL3,98,FALSE,FALSE,4),box.x+1,box.y+1,box.w,box.h);
     int xind = 0;
     int yind = 0;
-    char tex[30];
+    char tex[128];
     for (char i = 0; box.StoredText[i]; i++)
     {
         tex[xind] = box.StoredText[i];
@@ -65,7 +53,7 @@ void RenderTextBox(u8 Plane, struct UIBox box){
     }
 }
 
-void Game_Start(){
+void Game_Start(){ 
     //This assumes we start at the title
     VDP_loadTileSet(UISET.tileset,1,CPU);
     PAL_setPalette(PAL3,UISET.palette->data, CPU);
@@ -76,17 +64,37 @@ void Game_Start(){
     VDP_setTextPlane(BG_A);
     VDP_setTextPriority(1);
     PAL_setColor(15, RGB24_TO_VDPCOLOR(0xCCCCFF));
-    PAL_setColor(13, RGB24_TO_VDPCOLOR(0x000000));
+    /*
     struct UIBox MainBox;
-    MainBox.x = 7;
+    MainBox.x = 3;
     MainBox.y = 5;
-    MainBox.w = 24;
-    MainBox.h = 16;
-    const char* t = "Holy fucking shit it's the megadrive";
+    MainBox.w = 32;
+    MainBox.h = 12;
+    const char* t = "Hello Dr Meth, please come as you are";
     MainBox.StoredText = t;
     RenderTextBox(BG_A, MainBox);
+    scenes[0].boxes[0] = MainBox;
+    */
+   JOY_init();
+   JOY_setEventHandler( &myJoyHandler );
+   Cam_DirectControl = TRUE;
 }
 
 void Game_Update(){
-    UpdateCamera();
+    UpdateCamera(Joy_1_State);
+    SPR_update();
+}
+
+void ChangeScene(uint8_t index){
+    SPR_reset();
+
+    switch (index)
+    {
+    case TITLE:
+        Game_Start();
+        break;
+    
+    default:
+        break;
+    }
 }

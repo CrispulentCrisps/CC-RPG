@@ -6,6 +6,8 @@
 ],
 "files.associations": {
     "uielements.h": "c",
-    "resource.h": "c"
+    "resource.h": "c",
+    "player.h": "c",
+    "genesis.h": "c"
 }
 }
