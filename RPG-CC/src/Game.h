@@ -1,7 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "Camera.h"
 #include "Player.h"
 
 extern u8 SceneIndex;

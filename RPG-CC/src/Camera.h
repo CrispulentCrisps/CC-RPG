@@ -10,7 +10,10 @@ extern u16 WorldY;
 extern bool Cam_TrackingPlayer;
 extern bool Cam_DirectControl;
 
-void FollowTarget(int x, int y);
-void UpdateCamera(u16 state);
+extern u8 Cam_ChosenPlanes;
+
+void Camera_FollowTarget(int x, int y);
+void Camera_UpdateCamera(u16 state);
+void Camera_SetScrollMode(u8 x,u8 y);
 
 #endif

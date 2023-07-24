@@ -6,8 +6,8 @@ int main()
     while(1)
     {
         Frame++;
-        SYS_doVBlankProcess();
         Game_Update();
+        SYS_doVBlankProcess();
     }
     return (0);
 }

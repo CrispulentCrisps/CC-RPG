@@ -1,12 +1,20 @@
 #include "Game.h"
 
+u8 SceneIndex = 0;
+u32 Frame = 0;
+
+u16 Joy_1_State = 0;
+u16 Joy_2_State = 0;
+
+struct Scene scenes[2];
+
 void myJoyHandler( u16 joy, u16 changed, u16 state)
 {
-    if (joy == JOY_1 && !changed)
+    if (joy == JOY_1)
     {
         Joy_1_State = state;
     }
-    else if (joy == JOY_2 && !changed)
+    else if (joy == JOY_2)
     {
         Joy_2_State = state;
     }
@@ -63,25 +71,29 @@ void Game_Start(){
     
     VDP_setTextPlane(BG_A);
     VDP_setTextPriority(1);
-    PAL_setColor(15, RGB24_TO_VDPCOLOR(0xCCCCFF));
-    /*
+    
     struct UIBox MainBox;
     MainBox.x = 3;
     MainBox.y = 5;
     MainBox.w = 32;
     MainBox.h = 12;
-    const char* t = "Hello Dr Meth, please come as you are";
+    const char* t = "Hello source code snooper :D";
     MainBox.StoredText = t;
-    RenderTextBox(BG_A, MainBox);
+    //RenderTextBox(BG_A, MainBox);
     scenes[0].boxes[0] = MainBox;
-    */
+    
    JOY_init();
    JOY_setEventHandler( &myJoyHandler );
    Cam_DirectControl = TRUE;
+   Camera_SetScrollMode(0,0);
+    
+    SPR_init();
+    Player_Start();
 }
 
 void Game_Update(){
-    UpdateCamera(Joy_1_State);
+    Camera_UpdateCamera(Joy_1_State);
+    Player_Update();
     SPR_update();
 }
 
