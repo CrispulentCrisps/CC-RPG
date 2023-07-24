@@ -77,9 +77,9 @@ void Game_Start(){
     MainBox.y = 5;
     MainBox.w = 32;
     MainBox.h = 12;
-    const char* t = "Hello source code snooper :D";
+    const char* t = "Hello Geometric Entities! :D";
     MainBox.StoredText = t;
-    //RenderTextBox(BG_A, MainBox);
+    RenderTextBox(BG_A, MainBox);
     scenes[0].boxes[0] = MainBox;
     
    JOY_init();
@@ -93,7 +93,7 @@ void Game_Start(){
 
 void Game_Update(){
     Camera_UpdateCamera(Joy_1_State);
-    Player_Update();
+    Player_Update(Joy_1_State);
     SPR_update();
 }
 
