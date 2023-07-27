@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "Player.h"
+#include "UI.h"
 
 extern bool DEBUG;
 
@@ -23,15 +24,6 @@ enum SCENE_LIST {
 
 };
 
-struct UIBox{
-    int x;
-    int y;
-    int w;
-    int h;
-    const char* StoredText;
-    const char* DisplayText;
-};
-
 struct Scene {
     Sprite sprites[80];
     struct UIBox boxes[8];
@@ -42,4 +34,5 @@ extern struct Scene scenes[2];
 void Game_Start(void);
 void Game_Update(void);
 void Game_DEBUG_CALL(void);
+
 #endif
