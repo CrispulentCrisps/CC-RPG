@@ -8,6 +8,8 @@ u16 Joy_2_State = 0;
 
 struct Scene scenes[2];
 
+bool DEBUG = TRUE;
+
 void myJoyHandler( u16 joy, u16 changed, u16 state)
 {
     if (joy == JOY_1)
@@ -71,7 +73,7 @@ void Game_Start(){
     
     VDP_setTextPlane(BG_A);
     VDP_setTextPriority(1);
-    
+    /*
     struct UIBox MainBox;
     MainBox.x = 3;
     MainBox.y = 5;
@@ -81,7 +83,7 @@ void Game_Start(){
     MainBox.StoredText = t;
     RenderTextBox(BG_A, MainBox);
     scenes[0].boxes[0] = MainBox;
-    
+    */
    JOY_init();
    JOY_setEventHandler( &myJoyHandler );
    Cam_DirectControl = TRUE;
@@ -94,6 +96,11 @@ void Game_Start(){
 void Game_Update(){
     Camera_UpdateCamera(Joy_1_State);
     Player_Update(Joy_1_State);
+    if (DEBUG)
+    {
+        Game_DEBUG_CALL();
+    }
+    
     SPR_update();
 }
 
@@ -105,8 +112,10 @@ void ChangeScene(uint8_t index){
     case TITLE:
         Game_Start();
         break;
-    
     default:
         break;
     }
+}
+
+void Game_DEBUG_CALL(){
 }

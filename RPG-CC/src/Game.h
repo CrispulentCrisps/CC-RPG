@@ -3,6 +3,8 @@
 
 #include "Player.h"
 
+extern bool DEBUG;
+
 extern u8 SceneIndex;
 extern u32 Frame;
 
@@ -39,5 +41,5 @@ extern struct Scene scenes[2];
 
 void Game_Start(void);
 void Game_Update(void);
-
+void Game_DEBUG_CALL(void);
 #endif

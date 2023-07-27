@@ -31,30 +31,8 @@ void Camera_UpdateCamera(u16 state)
 
     if (Cam_DirectControl)
     {
-        if (Cam_DirectControl)
+        if (!Cam_TrackingPlayer)
         {
-            if (state == BUTTON_RIGHT + BUTTON_DOWN)
-            {
-                WorldX -= 3;
-                WorldY += 3;
-            }
-            else if (state == BUTTON_RIGHT + BUTTON_UP)
-            {
-                WorldX -= 3;
-                WorldY -= 3;
-            }
-            else if (state == BUTTON_LEFT + BUTTON_DOWN)
-            {
-                WorldX += 3;
-                WorldY += 3;
-            }        
-            else if (state == BUTTON_LEFT + BUTTON_UP)
-            {
-                WorldX += 3;
-                WorldY -= 3;
-            }
-            else
-            {
                 if (state == BUTTON_RIGHT)
                 {
                     WorldX -= 3;
@@ -70,6 +48,28 @@ void Camera_UpdateCamera(u16 state)
                 }
                 else if (state == BUTTON_UP)
                 {
+                    WorldY -= 3;
+                }
+            else
+            {
+                if (state == BUTTON_RIGHT + BUTTON_DOWN)
+                {
+                    WorldX -= 3;
+                    WorldY += 3;
+                }
+                else if (state == BUTTON_RIGHT + BUTTON_UP)
+                {
+                    WorldX -= 3;
+                    WorldY -= 3;
+                }
+                else if (state == BUTTON_LEFT + BUTTON_DOWN)
+                {
+                    WorldX += 3;
+                    WorldY += 3;
+                }        
+                else if (state == BUTTON_LEFT + BUTTON_UP)
+                {
+                    WorldX += 3;
                     WorldY -= 3;
                 }
             }
