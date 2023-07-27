@@ -21,7 +21,7 @@ void RenderTextBox(u8 Plane, struct UIBox box){
     VDP_setTileMapXY(Plane, TILE_ATTR_FULL(PAL3,99,TRUE,FALSE,1), box.x, box.y+box.h+1);
 
     //Inside Text
-    VDP_fillTileMapRect(Plane+1,TILE_ATTR_FULL(PAL3,98,FALSE,FALSE,4),box.x+1,box.y+1,box.w,box.h);
+    VDP_fillTileMapRect(Plane,TILE_ATTR_FULL(PAL3,98,FALSE,FALSE,4),box.x+1,box.y+1,box.w,box.h);
     int xind = 0;
     int yind = 0;
     char tex[128];
