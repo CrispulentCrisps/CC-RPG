@@ -30,7 +30,7 @@ void Game_Start(){
     PAL_setPalette(PAL1,TITLESET.palette->data, CPU);
     VDP_fillTileMapRect(BG_B,TILE_ATTR_FULL(PAL1,0,FALSE,FALSE,7),0,0,64,64);
 
-    VDP_loadFont(FONT.tiles, CPU);
+    VDP_loadFont(&FONT, CPU);
     VDP_setTextPlane(BG_A);
     VDP_setTextPriority(1);
 

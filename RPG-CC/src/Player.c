@@ -16,8 +16,8 @@ void Player_Start()
     Player_XPad = 24;
     Player_YPad = 24;
     PAL_setPalette(PAL0,PLAYER.palette->data, CPU);
-    PAL_setColor(15, 0xffffff);
-    Player_Sprite = SPR_addSprite(&PLAYER, Player_XPos, Player_YPos, TILE_ATTR(PAL0, 64, FALSE, FALSE));
+    PAL_setColor(15, 0x0EEE);
+    Player_Sprite = SPR_addSprite(&PLAYER, Player_XPos, Player_YPos, TILE_ATTR(PAL0, 0, FALSE, FALSE));
     Player_Controlling = TRUE;
 }
 
